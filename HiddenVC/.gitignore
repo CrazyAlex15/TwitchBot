@@ -1,0 +1,6 @@
+.env
+voice_channels.db
+vc_settings.json
+__pycache__/
+venv/
+.DS_Store
