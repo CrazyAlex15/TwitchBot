@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrazyAlex | IT Specialist</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            font-size: 15px;
+            text-shadow: 0 0 2px #004d13;
+            margin: 0;
+            overflow-x: hidden;
+            line-height: 1.4;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding-bottom: 50px;}
+        
+        a { color: #fdfd00; text-decoration: none; border-bottom: 1px dashed #fdfd00; }
+        a:hover { background-color: #fdfd00; color: #000; }
+
+        .line { margin-bottom: 15px; }
+        .prompt { color: #00bfff; font-weight: bold; }
+        .command { color: #fff; font-weight: bold; }
+        
+        .output { 
+            color: #ccc; 
+            margin-top: 5px; 
+            white-space: pre-wrap; 
+        }
+
+        .header-green { color: #00ff41; font-weight: bold; font-size: 1.1em; }
+        .role { color: #fdfd00; font-weight: bold; }
+        .date { color: #888; font-size: 0.9em; float: right;}
+        .desc { color: #bbb; margin-top: 2px; display: block; }
+        .tag { 
+            background: #222; 
+            color: #00bfff; 
+            padding: 2px 6px; 
+            font-size: 0.8em; 
+            border-radius: 4px; 
+            margin-right: 5px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background-color: #00ff41;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        @media (max-width: 600px) {
+            body { font-size: 12px; padding: 10px; }
+            .date { float: none; display: block; margin-bottom: 2px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="terminal">
+        <pre style="font-size: 8px; line-height: 8px; color: #00bfff; margin-bottom: 30px;">
+   _____                      _   _           
+  / ____|                    | | | |          
+ | |     _ __ __ _ _____   _ | |_| | _____  __
+ | |    | '__/ _` |_  / | | ||  _  |/ _ \ \/ /
+ | |____| | | (_| |/ /| |_| || | | |  __/>  < 
+  \_____|_|  \__,_/___|\__, ||_| |_|\___/_/\_\
+                        __/ |                 
+                       |___/                  
+        </pre>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+
+        const data = [
+            { 
+                cmd: "whoami", 
+                out: `<span class="header-green">Alexandros</span>
+IT Support Specialist & Network Enthusiast.
+
+"Renowned for my innovative approach to IT solutions, I began my career with hands-on hardware maintenance, swiftly establishing my distinctive problem-solving style. Currently, I continue to innovate and work with individual clients, consistently pushing the boundaries of IT support."` 
+            },
+            
+            // --- EXPERIENCE ---
+            { 
+                cmd: "cat work_experience.txt", 
+                out: `<span class="header-green">WORK EXPERIENCE</span>
+
+<span class="role">Network Infrastructure Support</span> <span class="date">2025</span>
+<b>MS Christoforou Ltd</b>
+<span class="desc">Set up and support network infrastructure for internal operations and clients. Ensure seamless network connectivity and troubleshoot issues efficiently.</span>
+<span class="tag">Network Infrastructure</span> <span class="tag">Troubleshooting</span>
+
+<span class="role">Summer Camp Activity Leader</span> <span class="date">2022</span>
+<b>Columbia Private Institute</b>
+<span class="desc">Ensured safety and kept participants engaged in events.</span>
+<span class="tag">Leadership</span> <span class="tag">Safety</span>
+
+<span class="role">Production Dept. Operator</span> <span class="date">2022</span>
+<b>Charalambides Christis Ltd</b>
+<span class="desc">Operated machinery, focused on yogurt/dairy preparation. Conducted quality control checks.</span>
+<span class="tag">Quality Control</span> <span class="tag">Efficiency</span>
+
+<span class="role">IT Support Services (Self-employed)</span> <span class="date">2021 - Present</span>
+<b>Freelance</b>
+<span class="desc">Provide hardware maintenance and PC repair services. Diagnose and resolve technical issues.</span>
+<span class="tag">IT Support</span> <span class="tag">Hardware Maintenance</span>
+
+<span class="role">Furniture Transportation</span> <span class="date">2016</span>
+<b>LaQualite Furniture</b>
+<span class="desc">Managed safe transportation and assembly of furniture. Assisted with inventory management.</span>`
+            },
+
+            // --- EDUCATION ---
+            { 
+                cmd: "cat education.txt", 
+                out: `<span class="header-green">EDUCATION</span>
+
+<span class="role">BSc in Informatics</span> <span class="date">2021 - Present</span>
+<b>Ionian University</b>
+
+<span class="role">High School Diploma</span> <span class="date">2017</span>
+<b>Lyceum / General High School</b>` 
+            },
+
+            // --- AWARDS ---
+            { 
+                cmd: "ls -la ./awards", 
+                out: `<span class="header-green">HONORS & CERTIFICATIONS</span>
+
+-rw-r--r--  1 crazy  staff   <b>Scout of the Republic of Cyprus Award</b> (2025)
+<span class="desc">   Comparable to the Eagle Scout Award (US) / King’s Scout Award (UK).</span>
+
+-rw-r--r--  1 crazy  staff   <b>First Aid Certified</b> (2025)` 
+            },
+
+            // --- FAQ ---
+            { 
+                cmd: "cat faq.txt", 
+                out: `<span class="header-green">ASK ME ANYTHING</span>
+
+<b>Q: What inspired you to pursue IT support?</b>
+A: My fascination with technology and solving real-world problems drove me to IT support, where I can directly improve system performance for users.
+
+<b>Q: How do you balance technical work with studies?</b>
+A: I prioritize time management, applying academic knowledge to practical scenarios, ensuring both fields complement each other.
+
+<b>Q: What is your approach to troubleshooting?</b>
+A: I follow a systematic method: identify the issue, isolate the cause, implement a solution, and verify network stability.` 
+            },
+
+            // --- PROJECTS ---
+            { 
+                cmd: "ls -la ./active_projects", 
+                out: `<span class="header-green">MY PROJECTS</span>
+
+drwx------  <b>CrazyMusic</b>     (High Quality Music Bot with FFmpeg)
+drwx------  <b>PiStats</b>        (Real-time Monitoring System)
+drwx------  <b>TicketBot</b>      (Discord Support System)
+drwx------  <b>AdGuard</b>        (Network-wide Ad Blocker)` 
+            },
+
+             // --- CONTACT (UPDATED) ---
+             { 
+                cmd: "cat contact.txt", 
+                out: `Email:    <a href="mailto:alexandrosch285@gmail.com">alexandrosch285@gmail.com</a>
+Discord:  <a href="https://discord.gg/4jgQZVtZ66" target="_blank">CrazyAlex15</a>
+GitHub:   <a href="https://github.com/CrazyAlex15" target="_blank">github.com/CrazyAlex15</a>` 
+            }
+        ];
+
+        let i = 0;
+
+        function addLine() {
+            if (i >= data.length) {
+                // Εδώ άλλαξα το alex@pi σε crazy@pi
+                terminal.innerHTML += `<div class="line"><span class="prompt">crazy@pi:~$</span> <span class="cursor"></span></div>`;
+                window.scrollTo(0, document.body.scrollHeight);
+                return;
+            }
+
+            const item = data[i];
+            const div = document.createElement('div');
+            div.className = 'line';
+            // Και εδώ crazy@pi
+            div.innerHTML = `<span class="prompt">crazy@pi:~$</span> <span class="command"></span><span class="cursor"></span>`;
+            terminal.appendChild(div);
+
+            const cmdSpan = div.querySelector('.command');
+            const cursor = div.querySelector('.cursor');
+            let charIndex = 0;
+
+            function typeChar() {
+                if (charIndex < item.cmd.length) {
+                    cmdSpan.textContent += item.cmd.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeChar, 40); 
+                } else {
+                    cursor.remove(); 
+                    const outputDiv = document.createElement('div');
+                    outputDiv.className = 'output';
+                    outputDiv.innerHTML = item.out;
+                    div.appendChild(outputDiv);
+                    
+                    i++;
+                    window.scrollTo(0, document.body.scrollHeight);
+                    setTimeout(addLine, 600); 
+                }
+            }
+            setTimeout(typeChar, 200);
+        }
+
+        addLine();
+    </script>
+</body>
+</html>
