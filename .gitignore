@@ -1,0 +1,56 @@
+# ───────────────────────── Secrets (NEVER commit) ─────────────────────────
+.env
+.env.*
+*.env
+*.env.txt
+cookies.txt
+
+# ───────────────────────── Per-bot runtime / generated data ────────────────
+# Created at runtime and server-specific — not source.
+seen_games.json
+server_settings.json
+vc_settings.json
+twitch_data.json
+config.json
+*.db
+*.sqlite
+*.sqlite3
+
+# ───────────────────────── Python ──────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+
+# ───────────────────────── Node ─────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ───────────────────────── Tooling / local helpers ─────────────────────────
+graphify-out/
+update_all_github.bat
+rp4 info.txt
+*.zip
+
+# ───────────────────────── Nested standalone repos ─────────────────────────
+# These bots live in their own GitHub repositories, not this monorepo:
+#   CrazyMusic   -> github.com/CrazyAlex15/CrazyMusic
+#   NetMonitor   -> github.com/CrazyAlex15/NetMonitor
+#   PiStats-Bot  -> github.com/CrazyAlex15/PiStats-Bot
+CrazyMusic/
+NetMonitor/
+PiStats-Bot/
+
+# ───────────────────────── OS / editor cruft ───────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

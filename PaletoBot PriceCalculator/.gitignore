@@ -1,5 +1,8 @@
 .env
-server_settings.json
+.env.*
 __pycache__/
+*.py[cod]
 venv/
+.venv/
+server_settings.json
 .DS_Store

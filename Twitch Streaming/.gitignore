@@ -1,5 +1,8 @@
 .env
-twitch_data.json
+.env.*
 __pycache__/
+*.py[cod]
 venv/
+.venv/
+twitch_data.json
 .DS_Store

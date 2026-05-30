@@ -125,8 +125,7 @@ client.once("ready", async () => {
                             "🧰 **Support** – General help & questions\n" +
                             "🚨 **Player Report** – Report rule breakers\n" +
                             "🐞 **Bug Report** – Server issues & glitches")
-            .setColor(COLORS.panel)
-            .setImage("https://i.imgur.com/your-banner-here.png"); // Optional Banner
+            .setColor(COLORS.panel);
 
         const row = new ActionRowBuilder().addComponents(
             new ButtonBuilder().setCustomId("v3:ticket_support").setLabel("Support").setStyle(ButtonStyle.Primary).setEmoji("🧰"),
